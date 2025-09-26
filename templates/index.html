@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport", content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR CODE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+    <body>
+        
+    
+        <section>
+            <form method="POST" class="form">
+                <div class="loading-text">Insira o link para gerar o QRCODE</div>
+                <div class="input_container">
+                <input type="text" name="INPUT">
+                </div>
+                <button type="submit">GERAR</button>
+            </form>
+        </section>
+
+        {% if enviado %}
+        <section class="qr_code">
+            <img src="{{ url_for('static', filename=img) }}" alt="QR-code">
+        </section>
+        
+        {% elif erro %}
+            <p style="color:red"> {{ erro }}</p>
+        {% endif %}
+
+    </body>
+</html>
